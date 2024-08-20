@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+    <!--   creating DataProviderMySQLImpl as bean  -->
+    <bean id="dataProviderMysql" class="exm.ioc.DataProviderMySQLImpl">
+
+    </bean>
+    <!--   creating DataProviderWebServiceImpl as bean  -->
+    <bean id="dataProviderWebService" class="exm.ioc.DataProviderWebServiceImpl">
+
+    </bean>
+
+   <!-- Creating DataManager as bean to pass the object of DataProviderMySQLImpl through constructor   -->
+    <bean id="dataManagerForMysql" class="exm.ioc.DataManager">
+        <constructor-arg ref="dataProviderMysql"></constructor-arg>
+    </bean>
+
+    <!-- Creating DataManager as bean to pass the object of DataProviderWebServiceImpl through constructor   -->
+    <bean id="dataManagerForWebService" class="exm.ioc.DataManager">
+        <constructor-arg ref="dataProviderWebService"></constructor-arg>
+    </bean>
+
+</beans>
